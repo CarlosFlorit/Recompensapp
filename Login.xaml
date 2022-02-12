@@ -1,0 +1,61 @@
+﻿<Window 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Recompensapp01"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Recompensapp01.Window1"
+        
+        mc:Ignorable="d"
+        Title="Login" Height="600" Width="400">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Recompensapp01;component/css/MyStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+    <Grid>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="/images/bg.png"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="Auto"/>
+            <RowDefinition  Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition  Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="1" HorizontalAlignment="Center"  Margin="0,0,0,4">
+
+            <Image Source="images/recom2.png" HorizontalAlignment="Center" Width="244" Margin="0,75,0,0"/>
+
+        </Label>
+        
+        <Label Grid.Row="2" HorizontalAlignment="Center" FontFamily="{StaticResource Prime}"  FontSize="20" Margin="0,75,0,30" Content="Login"/>
+
+        <Label Grid.Row="3" HorizontalAlignment="Center" FontFamily="{StaticResource Prime}" Margin="0,0,0,0" Foreground="#FFED7C2E" FontSize="14" FontWeight="Normal" Content="Usuario"/>
+        <TextBox x:Name="usuar"   Grid.Row="4" Grid.Column="2" FontFamily="{StaticResource Prime}" Margin="120,5,120,20" HorizontalAlignment="Stretch" />
+
+
+
+
+
+        <Label Grid.Row="5" HorizontalAlignment="Center" FontFamily="{StaticResource Prime}" Foreground="#FF24A0E6" FontSize="14" FontWeight="Normal" Content="Contraseña"/>
+        <PasswordBox x:Name="password" FontFamily="{StaticResource Prime}" Margin="120,5,120,20" Grid.Row="6" HorizontalAlignment="Stretch" mah:TextBoxHelper.IsWaitingForData="True" mah:PasswordBoxHelper.RevealButtonContent="{DynamicResource MaterialDesignOutlinedPasswordBox}" Cursor="IBeam"/>
+        <Button  Name="Check" Click="check_Click" Style="{DynamicResource RoundButton}" Grid.Row="7" HorizontalAlignment="Center" FontWeight="Normal" FontFamily="{StaticResource Prime}" Width="69" Background="#FFED7C2E" Foreground="#FFF9F9F9" Content="Entrar"/>
+
+
+    </Grid>
+
+
+</Window>

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="Nia" />
+          </Key>
+          <Property Name="Nia" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="Nombre_alumno" Type="varchar" MaxLength="50" />
+          <Property Name="Apellidos_alumno" Type="varchar(max)" />
+          <Property Name="Curso" Type="varchar" MaxLength="50" />
+          <Property Name="Grupo" Type="varchar" MaxLength="50" />
+          <Property Name="Saldo" Type="int" />
+        </EntityType>
+        <EntityType Name="Obtencion">
+          <Key>
+            <PropertyRef Name="idObtencion" />
+          </Key>
+          <Property Name="idObtencion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="niaAlumno" Type="varchar" MaxLength="8" />
+          <Property Name="idrVentaja" Type="int" />
+        </EntityType>
+        <EntityType Name="Profesor">
+          <Key>
+            <PropertyRef Name="dni" />
+          </Key>
+          <Property Name="dni" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="usr" Type="varchar" MaxLength="50" />
+          <Property Name="psw" Type="varchar" MaxLength="80" />
+          <Property Name="nombre_prof" Type="varchar" MaxLength="50" />
+          <Property Name="apellido_prof" Type="varchar" MaxLength="50" />
+          <Property Name="rol" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ventaja">
+          <Key>
+            <PropertyRef Name="idVentaja" />
+          </Key>
+          <Property Name="idVentaja" Type="int" Nullable="false" />
+          <Property Name="nombreVentaja" Type="varchar" MaxLength="50" />
+          <Property Name="Valor" Type="int" />
+        </EntityType>
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Obtencion" EntityType="Self.Obtencion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesor" EntityType="Self.Profesor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ventaja" EntityType="Self.Ventaja" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alumno">
+          <Key>
+            <PropertyRef Name="Nia" />
+          </Key>
+          <Property Name="Nia" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre_alumno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos_alumno" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Curso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Grupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Saldo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Obtencion">
+          <Key>
+            <PropertyRef Name="idObtencion" />
+          </Key>
+          <Property Name="idObtencion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="niaAlumno" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="idrVentaja" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Profesor">
+          <Key>
+            <PropertyRef Name="dni" />
+          </Key>
+          <Property Name="dni" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="psw" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_prof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellido_prof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Ventaja">
+          <Key>
+            <PropertyRef Name="idVentaja" />
+          </Key>
+          <Property Name="idVentaja" Type="Int32" Nullable="false" />
+          <Property Name="nombreVentaja" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="DatabaseEntitiesAlumnos" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alumno" EntityType="Self.Alumno" />
+          <EntitySet Name="Obtencion" EntityType="Self.Obtencion" />
+          <EntitySet Name="Profesor" EntityType="Self.Profesor" />
+          <EntitySet Name="Ventaja" EntityType="Self.Ventaja" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntitiesAlumnos">
+          <EntitySetMapping Name="Alumno">
+            <EntityTypeMapping TypeName="DatabaseModel.Alumno">
+              <MappingFragment StoreEntitySet="Alumno">
+                <ScalarProperty Name="Nia" ColumnName="Nia" />
+                <ScalarProperty Name="Nombre_alumno" ColumnName="Nombre_alumno" />
+                <ScalarProperty Name="Apellidos_alumno" ColumnName="Apellidos_alumno" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Obtencion">
+            <EntityTypeMapping TypeName="DatabaseModel.Obtencion">
+              <MappingFragment StoreEntitySet="Obtencion">
+                <ScalarProperty Name="idObtencion" ColumnName="idObtencion" />
+                <ScalarProperty Name="niaAlumno" ColumnName="niaAlumno" />
+                <ScalarProperty Name="idrVentaja" ColumnName="idrVentaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesor">
+            <EntityTypeMapping TypeName="DatabaseModel.Profesor">
+              <MappingFragment StoreEntitySet="Profesor">
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="usr" ColumnName="usr" />
+                <ScalarProperty Name="psw" ColumnName="psw" />
+                <ScalarProperty Name="nombre_prof" ColumnName="nombre_prof" />
+                <ScalarProperty Name="apellido_prof" ColumnName="apellido_prof" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ventaja">
+            <EntityTypeMapping TypeName="DatabaseModel.Ventaja">
+              <MappingFragment StoreEntitySet="Ventaja">
+                <ScalarProperty Name="idVentaja" ColumnName="idVentaja" />
+                <ScalarProperty Name="nombreVentaja" ColumnName="nombreVentaja" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

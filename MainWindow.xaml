@@ -1,0 +1,220 @@
+﻿<Window x:Class="Recompensapp01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Recompensapp01" d:DataContext="{d:DesignInstance Type=local:Alumno}"
+        mc:Ignorable="d"
+        Title="Recompensapp" Height="600" Width="400">
+    
+    <Grid>
+
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+
+
+
+        <TabControl Grid.ColumnSpan="2">
+            <TabItem Header="Alumno">
+
+                <Grid>
+
+
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="Auto"/>
+                        <RowDefinition  Height="100"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition  Height="50"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/images/bg.png"/>
+                    </Grid.Background>
+
+
+
+                    <ComboBox x:Name="lstAlumnos" 
+
+                        FontFamily="{StaticResource Prime}" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Width="250" Margin="50,0,50,0" ItemsSource="{Binding Nombre_alumno}" SelectionChanged="lstAlumnos_SelectionChanged">
+                        <ComboBoxItem ></ComboBoxItem>
+                        <ComboBoxItem ></ComboBoxItem>
+                        <ComboBoxItem ></ComboBoxItem>
+                        <ComboBoxItem ></ComboBoxItem>
+
+                    </ComboBox>
+
+
+
+                    <Label Grid.Row="4" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="75,0,0,0">NIA</Label>
+                    <Label Grid.Row="5" FontFamily="{StaticResource Prime}" Margin="75,0,0,0" HorizontalAlignment="Left">Curso</Label>
+                    <Label Grid.Row="6" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="75,0,0,0">Grupo</Label>
+                    <Label Grid.Row="7" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="75,0,0,0">Puntos</Label>
+
+                    <TextBox Name="boxNia" Grid.Row="4" Grid.Column="2" Margin="0,5,75,5" IsReadOnly="True" Cursor="IBeam"></TextBox>
+                    <TextBox Name="boxCurso" Grid.Row="5" Grid.Column="2" Margin="0,5,75,5" IsReadOnly="True"></TextBox>
+                    <TextBox Name="boxGrupo" Grid.Row="6" Grid.Column="2" Margin="0,5,75,5" IsReadOnly="True" Cursor="IBeam"></TextBox>
+                    <TextBox Name="boxPuntos" Grid.Row="7" Grid.Column="2" Margin="0,5,75,5" IsReadOnly="True"></TextBox>
+                    
+                    </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Puntos">
+
+                <Grid Margin="0,-2,0,0">
+
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/images/bg.png"/>
+                    </Grid.Background>
+                    
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="100"/>
+                        <RowDefinition  Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition  Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Row="2" Name="puntosNombreAlumno" FontFamily="{StaticResource Prime}" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="18" IsReadOnly="True"/>
+                    <TextBox Grid.Row="3" Name="puntosNiaAlumno" FontFamily="{StaticResource Prime}" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="18" Margin="0,0,0,30" IsReadOnly="True"/>
+
+                    <Label Grid.Row="4"  FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Puntualidad</Label>
+                    <Label Grid.Row="5"  FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Comportamiento impecable</Label>
+                    <Label Grid.Row="6"  FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Hace las tareas de casa</Label>
+                    <Label Grid.Row="7"  FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Ayuda a sus compañeros</Label>
+                    <Label Grid.Row="8"  FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Participa en clase</Label>
+                    <Label Grid.Row="9"  FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,30">Otros méritos</Label>
+
+                    <Label Grid.Row="10"  FontFamily="{StaticResource Prime}" HorizontalAlignment="Right" Margin="85,0,0,0">Puntos a añadir:</Label>
+                    <Label Grid.Row="11"  FontFamily="{StaticResource Prime}" HorizontalAlignment="Right" Margin="85,0,0,0">Saldo actual:</Label>
+
+                    <TextBox Grid.Row="10" Name="boxSaldoAdd" FontFamily="{StaticResource Prime}" Grid.Column="2" HorizontalAlignment="Left" Margin="5,0,0,0" IsReadOnly="True"></TextBox>
+                    <TextBox Grid.Row="11" Name="boxSaldoActual" FontFamily="{StaticResource Prime}" Grid.Column="2" HorizontalAlignment="Left" Margin="5,0,0,0" IsReadOnly="True"></TextBox>
+
+                    <CheckBox Name="Check1" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" Margin="20,0,0,0" Checked="Check1_Checked" Unchecked="Check1_Unchecked"></CheckBox>
+                    <CheckBox Name="Check2" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" Margin="20,0,0,0" Checked="Check2_Checked" Unchecked="Check2_Unchecked"></CheckBox>
+                    <CheckBox Name="Check3" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" Margin="20,0,0,0" Checked="Check3_Checked" Unchecked="Check3_Unchecked"></CheckBox>
+                    <CheckBox Name="Check4" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Left" Margin="20,0,0,0" Checked="Check4_Checked" Unchecked="Check4_Unchecked"></CheckBox>
+                    <CheckBox Name="Check5" Grid.Row="8" Grid.Column="2" HorizontalAlignment="Left" Margin="20,0,0,0" Checked="Check5_Checked" Unchecked="Check5_Unchecked"></CheckBox>
+                    <CheckBox Name="Check6" Grid.Row="9" Grid.Column="2" HorizontalAlignment="Left" Margin="20,0,0,30" Checked="Check6_Checked" Unchecked="Check6_Unchecked"></CheckBox>
+
+                    <Button Style="{DynamicResource RoundButton}"  FontFamily="{StaticResource Prime}" Grid.Row="12" HorizontalAlignment="Center" Grid.ColumnSpan="2" FontWeight="Normal" Margin="0,30,0,0" RenderTransformOrigin="0.5,0.5" Width="80" Height="30" Background="#FFED7C2E" Foreground="#FFF6F6F1" BorderBrush="#FF8DCFF4" Click="AddSaldo">Añadir
+                    </Button>
+
+
+                </Grid>
+
+
+            </TabItem>
+
+            <TabItem Header="Ventajas">
+
+                <Grid>
+
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/images/bg.png"/>
+                    </Grid.Background>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="100"/>
+                        <RowDefinition  Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition  Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="2" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0" ToolTip="80 pts">Punto extra en el examen</Label>
+                    <Label Grid.Row="3" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Elegir contenido audiovisual</Label>
+                    <Label Grid.Row="4" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Cambiar grupo de trabajo</Label>
+                    <Label Grid.Row="5" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Usar apuntes durante el examen</Label>
+                    <Label Grid.Row="6" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Elegir asiento en clase</Label>
+                    <Label Grid.Row="7" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,30">Permiso para ir al baño</Label>
+
+                    <CheckBox Name="vCheck1" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,0" Checked="vCheck1_Checked" Unchecked="vCheck1_Unchecked"/>
+                    <CheckBox Name="vCheck2" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,0" Checked="vCheck2_Checked" Unchecked="vCheck2_Unchecked"></CheckBox>
+                    <CheckBox Name="vCheck3" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,0" Checked="vCheck3_Checked" Unchecked="vCheck3_Unchecked"></CheckBox>
+                    <CheckBox Name="vCheck4" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,0" Checked="vCheck4_Checked" Unchecked="vCheck4_Unchecked"></CheckBox>
+                    <CheckBox Name="vCheck5" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,0" Checked="vCheck5_Checked" Unchecked="vCheck5_Unchecked"></CheckBox>
+                    <CheckBox Name="vCheck6" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,30" Checked="vCheck6_Checked" Unchecked="vCheck6_Unchecked"></CheckBox>
+
+                    <Button Name="AnadirVent" Click="AddVent" Grid.Row="8" Style="{DynamicResource RoundButton}" HorizontalAlignment="Center" Grid.ColumnSpan="3" FontWeight="Normal" Margin="0,0,0,0" FontFamily="{StaticResource Prime}" Width="120" Height="25" BorderBrush="#FFED7C2E" Background="#FFED7C2E" Foreground="#FFFBFAFA">Añadir ventajas</Button>
+                    
+                    <Label Grid.Row="9"  FontFamily="{StaticResource Prime}" HorizontalAlignment="Right" Margin="85,10,0,0">Valor ventajas:</Label>
+                    <TextBox Name="ventajasPrecio" FontFamily="{StaticResource Prime}" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Center" Margin="0,5,0,-3" IsReadOnly="True"></TextBox>
+                    
+                    <Label Grid.Row="10"  FontFamily="{StaticResource Prime}" HorizontalAlignment="Right" Margin="85,0,0,0">Saldo actual:</Label>
+                    <TextBox Name="ventajasSaldoActual" FontFamily="{StaticResource Prime}" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Center" Margin="0,5,0,-3" IsReadOnly="True"></TextBox>
+
+                    <ListBox FontFamily="{StaticResource Prime}" Grid.Row="11" Grid.ColumnSpan="3" Name="lstVentajas" BorderThickness="2" HorizontalAlignment="Stretch" Margin="75,23,75,40" BorderBrush="#FFEF6608" Background="White" />
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+
+
+    </Grid>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Recompensapp01;component/css/MyStyle.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+</Window>
+
+
+
+
