@@ -55,7 +55,7 @@ namespace Recompensapp01
         }
 
 
-
+        //carga combobox
         private void Mostrar_Datos()
         {
             DatabaseEntitiesAlumnos entidades = new DatabaseEntitiesAlumnos();
@@ -108,14 +108,9 @@ namespace Recompensapp01
         private void lstAlumnos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DatabaseEntitiesAlumnos entidades = new DatabaseEntitiesAlumnos();
-            //int selectedIndex = lstAlumnos.SelectedIndex;
-            //Object selectedItem = lstAlumnos.SelectedItem;
-
-            //Alumno alumno = entidades.Alumno.ToList<Alumno>().Where(c => c.Equals(selectedItem)).FirstOrDefault<Alumno>();
 
             Alumno alumno = lstAlumnos.SelectedItem as Alumno;
 
-            //Obtencion obtencion = object as Obtencion;
 
             boxNia.Text = alumno.Nia;
             boxCurso.Text = alumno.Curso;
@@ -129,25 +124,24 @@ namespace Recompensapp01
             ventajasSaldoActual.Text = Convert.ToString(alumno.Saldo);
             ventajasPrecio.Text = Convert.ToString(valorVentajas);
 
-
-
-            Obtencion ventajasObt = entidades.Obtencion.FirstOrDefault(c => c.niaAlumno.Equals(alumno.Nia));
-
-
-
-
-            List<Obtencion> ventajasObtenidas = (from obt in entidades.Obtencion
-                                                 where obt.niaAlumno == alumno.Nia
-                                                 select obt).ToList();
-
+            
 
             try
             {
 
+   
+
+
+                List<Obtencion> ventajasObtenidas = (from obt in entidades.Obtencion
+                                                     where obt.niaAlumno == alumno.Nia 
+                                                     select obt).ToList();
 
                 List<Ventaja> ventajas = (from obt in entidades.Ventaja
-                                          where obt.idVentaja == ventajasObt.idrVentaja
+                                          join Obtencion in entidades.Obtencion on obt.idVentaja equals Obtencion.idrVentaja
+                                          where Obtencion.niaAlumno == alumno.Nia
                                           select obt).ToList();
+
+
 
 
                 lstVentajas.ItemsSource = ventajas;
@@ -162,22 +156,6 @@ namespace Recompensapp01
                 //lstAlumnos.Items.Clear();
             }
 
-
-            /*
-            if (alumno != null) { 
-            Obtencion ventajasObtenidas = entidades.Obtencion.ToList<Obtencion>().Where(c => int.Parse(c.niaAlumno) == int.Parse(alumno.Nia)).FirstOrDefault<Obtencion>();
-
-            lstVentajas.Items.Clear();
-            lstVentajas.ItemsSource = ventajasObtenidas;
-            lstAlumnos.Items.Refresh();
-
-            }
-            else
-            {
-                MessageBox.Show("No hay ninguna coincidencia");
-            }
-
-            */
 
         }
 
@@ -299,6 +277,7 @@ namespace Recompensapp01
         //
         private void vCheck1_Checked(object sender, RoutedEventArgs e)
         {
+            ventajasPrecio.Text = Convert.ToString(valorVentajas);
             valorVentajas = valorVentajas + 80;
             ventajasPrecio.Text = Convert.ToString(valorVentajas);
         }
@@ -363,6 +342,7 @@ namespace Recompensapp01
 
         private void vCheck6_Checked(object sender, RoutedEventArgs e)
         {
+            ventajasPrecio.Text = Convert.ToString(valorVentajas);
             valorVentajas = valorVentajas + 10;
             ventajasPrecio.Text = Convert.ToString(valorVentajas);
         }
@@ -370,6 +350,7 @@ namespace Recompensapp01
 
         private void vCheck6_Unchecked(object sender, RoutedEventArgs e)
         {
+            ventajasPrecio.Text = Convert.ToString(valorVentajas);
             valorVentajas = valorVentajas - 10;
             ventajasPrecio.Text = Convert.ToString(valorVentajas);
         }
@@ -395,11 +376,11 @@ namespace Recompensapp01
                 //Actualizamos saldo actual del alumno
                 DatabaseEntitiesAlumnos entidades = new DatabaseEntitiesAlumnos();
 
-                Alumno alu = entidades.Alumno.ToList<Alumno>().Where(c => c.Nia.Equals(boxNia.Text)).FirstOrDefault<Alumno>();
-                alu.Saldo = alu.Saldo - valorVentajas;
+                Alumno alumno = entidades.Alumno.ToList<Alumno>().Where(c => c.Nia.Equals(boxNia.Text)).FirstOrDefault<Alumno>();
+                alumno.Saldo = alumno.Saldo - valorVentajas;
                 entidades.SaveChanges();
-                boxSaldoActual.Text = Convert.ToString(alu.Saldo);
-                ventajasSaldoActual.Text = Convert.ToString(alu.Saldo);
+                boxSaldoActual.Text = Convert.ToString(alumno.Saldo);
+                ventajasSaldoActual.Text = Convert.ToString(alumno.Saldo);
 
 
                 //Añadimos las ventajas seleccionadas en los checkboxes
@@ -415,7 +396,7 @@ namespace Recompensapp01
                         entidades.Obtencion.AddObject(vent1);
                         entidades.SaveChanges();
                         MessageBox.Show("Ventaja añadida con éxito");
-
+                        vCheck1.IsChecked = false;
                     }
                     catch
                     {
@@ -435,7 +416,7 @@ namespace Recompensapp01
                     entidades.Obtencion.AddObject(vent2);
                     entidades.SaveChanges();
                     MessageBox.Show("Ventaja añadida con éxito");
-
+                    vCheck2.IsChecked = false;
                     }
 
                     catch
@@ -456,7 +437,7 @@ namespace Recompensapp01
                         entidades.Obtencion.AddObject(vent3);
                         entidades.SaveChanges();
                         MessageBox.Show("Ventaja/s añadida/s con éxito");
-
+                        vCheck3.IsChecked = false;
                     }
 
                     catch
@@ -477,7 +458,7 @@ namespace Recompensapp01
                         entidades.Obtencion.AddObject(vent4);
                         entidades.SaveChanges();
                         MessageBox.Show("Ventaja añadida con éxito");
-
+                        vCheck4.IsChecked = false;
                     }
 
                     catch
@@ -499,7 +480,7 @@ namespace Recompensapp01
                         entidades.Obtencion.AddObject(vent5);
                         entidades.SaveChanges();
                         MessageBox.Show("Ventaja añadida con éxito");
-
+                        vCheck5.IsChecked = false;
                     }
 
                     catch
@@ -521,7 +502,7 @@ namespace Recompensapp01
                         entidades.Obtencion.AddObject(vent6);
                         entidades.SaveChanges();
                         MessageBox.Show("Ventaja añadida con éxito");
-
+                        vCheck6.IsChecked = false;
                     }
 
                     catch
@@ -532,19 +513,17 @@ namespace Recompensapp01
 
 
                 //Limpiamos los checkboxes
-                vCheck1.IsChecked = false;
-                vCheck2.IsChecked = false;
-                vCheck3.IsChecked = false;
-                vCheck4.IsChecked = false;
-                vCheck5.IsChecked = false;
-                vCheck6.IsChecked = false;
+
+                
+                
+               
 
 
                 //Actualizamos la lista de ventajas
 
-                Alumno alumno = lstAlumnos.SelectedItem as Alumno;
+                Alumno alu = lstAlumnos.SelectedItem as Alumno;
 
-                Obtencion ventajasObt = entidades.Obtencion.FirstOrDefault(c => c.niaAlumno.Equals(alumno.Nia));
+                Obtencion ventajasObt = entidades.Obtencion.FirstOrDefault(c => c.niaAlumno.Equals(alu.Nia));
 
 
 
@@ -556,10 +535,20 @@ namespace Recompensapp01
                 try
                 {
 
-                    
+                    /*
                     List<Ventaja> ventajas = (from obt in entidades.Ventaja
                                           where obt.idVentaja == ventajasObt.idrVentaja
                                           select obt).ToList();
+                    */
+
+
+                    List<Ventaja> ventajas = (from obt in entidades.Ventaja
+                                              join Obtencion in entidades.Obtencion on obt.idVentaja equals Obtencion.idrVentaja
+                                              where Obtencion.niaAlumno == alumno.Nia
+                                              select obt).ToList();
+
+
+
 
 
                     lstVentajas.DisplayMemberPath = "nombreVentaja";
