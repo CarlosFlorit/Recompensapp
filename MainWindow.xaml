@@ -172,11 +172,11 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Row="2" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0" ToolTip="80 pts">Punto extra en el examen</Label>
-                    <Label Grid.Row="3" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Elegir contenido audiovisual</Label>
-                    <Label Grid.Row="4" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Cambiar grupo de trabajo</Label>
-                    <Label Grid.Row="5" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Usar apuntes durante el examen</Label>
-                    <Label Grid.Row="6" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0">Elegir asiento en clase</Label>
-                    <Label Grid.Row="7" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,30">Permiso para ir al baño</Label>
+                    <Label Grid.Row="3" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0" ToolTip="20 pts">Elegir contenido audiovisual</Label>
+                    <Label Grid.Row="4" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0" ToolTip="40 pts">Cambiar grupo de trabajo</Label>
+                    <Label Grid.Row="5" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0" ToolTip="80 pts">Usar apuntes durante el examen</Label>
+                    <Label Grid.Row="6" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,0" ToolTip="40 pts">Elegir asiento en clase</Label>
+                    <Label Grid.Row="7" FontFamily="{StaticResource Prime}" HorizontalAlignment="Left" Margin="85,0,0,30" ToolTip="10 pts">Permiso para ir al baño</Label>
 
                     <CheckBox Name="vCheck1" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,0" Checked="vCheck1_Checked" Unchecked="vCheck1_Unchecked"/>
                     <CheckBox Name="vCheck2" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,0" Checked="vCheck2_Checked" Unchecked="vCheck2_Unchecked"></CheckBox>
